@@ -1,5 +1,6 @@
 // -----####-----Global Variables and DOM elements-----####-----
 displayEl=document.getElementById('display')
+displayEl.textContent="0"
 clearBtn=document.getElementById('clear')
 deleteBtn=document.getElementById('delete')
 equalsBtn=document.getElementById('equals')
@@ -44,7 +45,7 @@ function addToDisplay(a){
 function setOperate(operator){
     if (operation!=="-1") evaluate()
     operation=operator
-    firstNum=parseFloat(displayEl.textContent)
+    firstNum=displayEl.textContent
     toClearDisplay=true
 }
 
@@ -57,9 +58,14 @@ function evaluate(){
         }, 1000);
         return
     }
-    secondNum=parseFloat(displayEl.textContent)
-    displayEl.textContent=operate(operation,firstNum,secondNum)
+    secondNum=displayEl.textContent
+    result=operate(operation,firstNum,secondNum)
+    displayEl.textContent=roundToFour(result)
     operation="0"
+}
+
+function roundToFour(num){
+    return (Math.round(num*10000)/10000)
 }
 
 function add(a,b=0){
@@ -77,6 +83,8 @@ function divide(a,b=1){
 }
 
 function operate(operation,a,b){
+    a=Number(a)
+    b=Number(b)
     switch (operation){
         case '+':
             return add(a,b)
@@ -105,7 +113,8 @@ function clear(){
 }
 
 function deleteFromLast(){
-    displayEl.textContent=displayEl.textContent.toString().slice(0,-1)
+    displayEl.textContent.toString().length===1?displayEl.textContent="0":displayEl.textContent=displayEl.textContent.toString().slice(0,-1)
+    
 }
 
 function addDecimal(){

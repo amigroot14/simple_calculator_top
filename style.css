@@ -8,6 +8,7 @@
 
 body {
   background: blanchedalmond;
+  overflow: hidden;
 }
 
 .container {
@@ -15,7 +16,7 @@ body {
   background: slategray;
   border-radius: 10px;
   padding: 2rem 1rem;
-  margin: 5rem auto;
+  margin: 15vh auto;
   max-width: 400px;
   height: 600px;
   display: grid;
@@ -47,8 +48,9 @@ body {
 }
 
 #display {
-  padding: 3rem 1rem 0 0;
+  padding: 3rem 1rem 0 1rem;
   grid-area: a;
+  word-wrap: break-word;
   background: #fff;
   font-size: 2rem;
   text-align: right;
@@ -65,5 +67,11 @@ body {
 @media (max-width: 500px) {
   .container {
     max-width: 350px;
+  }
+  #display {
+    font-size: 1.5rem;
+  }
+  .btn {
+    font-size: 1rem;
   }
 }
