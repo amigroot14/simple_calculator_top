@@ -1,5 +1,7 @@
 // -----####-----Global Variables and DOM elements-----####-----
 displayEl=document.getElementById('display')
+smallDisplayEl=document.getElementById('small-display')
+smallDisplayEl.textContent=""
 displayEl.textContent="0"
 clearBtn=document.getElementById('clear')
 deleteBtn=document.getElementById('delete')
@@ -20,7 +22,10 @@ operation="0"
 // -----####-----Event Listeners-----####-----
 
 numBtns.forEach(numBtn => {
-    numBtn.addEventListener('click',()=>addToDisplay(numBtn.getAttribute('data-num')))
+    numBtn.addEventListener('click',()=>{
+        addToDisplay(numBtn.getAttribute('data-num'))
+        addToSmallDisplay(numBtn.getAttribute('data-num'))
+    })
 });
 
 opBtns.forEach(opBtn => {
@@ -28,7 +33,10 @@ opBtns.forEach(opBtn => {
 })
 
 clearBtn.addEventListener('click',()=>clear())
-deleteBtn.addEventListener('click',()=>deleteFromLast())
+deleteBtn.addEventListener('click',()=>{
+    deleteFromLast()
+    deleteFromSmallDisplay()
+})
 decimalBtn.addEventListener('click',()=>addDecimal())
 equalsBtn.addEventListener('click',()=>evaluate())
 
@@ -42,11 +50,31 @@ function addToDisplay(a){
     displayEl.textContent+=a
 }
 
+function addToSmallDisplay(a){
+    smallDisplayEl.textContent+=a
+}
+
+function deleteFromSmallDisplay(){
+    smallDisplayEl.textContent=smallDisplayEl.textContent.slice(0,-1)
+}
+
 function setOperate(operator){
     if (operation!=="-1") evaluate()
     operation=operator
+    checkIfOperatorPresent(smallDisplayEl.textContent)?smallDisplayEl.textContent=smallDisplayEl.textContent.toString().slice(0,-1)+operator:smallDisplayEl.textContent+=operator
+    checkIfStartWithOperator(smallDisplayEl.textContent)?smallDisplayEl.textContent="":smallDisplayEl.textContent=smallDisplayEl.textContent
     firstNum=displayEl.textContent
     toClearDisplay=true
+}
+
+function checkIfOperatorPresent(text){
+    if (text.includes("+")||text.includes("-")||text.includes("/")||text.includes("*"))
+    return true
+    else return false
+}
+
+function checkIfStartWithOperator(text){
+    if(!parseInt(text)) return true
 }
 
 function evaluate(){
@@ -61,6 +89,7 @@ function evaluate(){
     secondNum=displayEl.textContent
     result=operate(operation,firstNum,secondNum)
     displayEl.textContent=roundToFour(result)
+    smallDisplayEl.textContent=displayEl.textContent
     operation="0"
 }
 
@@ -106,6 +135,7 @@ function clearDisplay(){
 }
 
 function clear(){
+    smallDisplayEl.textContent=""
     displayEl.textContent="0"
     firstNum=""
     secondNum=""
@@ -126,8 +156,8 @@ function addDecimal(){
 
 // -----####-----xxxx-xxxx-xxxx-xxxx-xxxx-----####-----
 
-
-
+// smallDisplayEl.textContent="/"
+// console.log(parseInt(smallDisplayEl.textContent))
 
 
 

@@ -48,9 +48,20 @@ body {
   background: lightgrey;
 }
 
-#display {
-  padding: 3rem 1rem 0 1rem;
+#screen {
   grid-area: a;
+  background: #fff;
+}
+
+#small-display {
+  font-size: 1.25rem;
+  color: #333;
+  padding: 0.5rem 1rem 0 0.5rem;
+  text-align: right;
+}
+
+#display {
+  padding: 2rem 1rem 0 1rem;
   word-wrap: break-word;
   word-break: break-all;
   background: #fff;
