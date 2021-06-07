@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: blanchedalmond;
+}
+
+.container {
+  overflow: hidden;
+  background: slategray;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  margin: 5rem auto;
+  max-width: 400px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "a a a a"
+    "b b c c"
+    "d e f g"
+    "h i j k"
+    "l m n o"
+    "p q r s";
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.btn {
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 0;
+  transition: all 0.1s ease-in;
+}
+.btn:active {
+  background: transparent;
+  color: #fff;
+}
+
+.func-btn {
+  background: lightgrey;
+}
+
+#display {
+  padding: 3rem 1rem 0 0;
+  grid-area: a;
+  background: #fff;
+  font-size: 2rem;
+  text-align: right;
+}
+
+#clear {
+  grid-area: b;
+}
+
+#delete {
+  grid-area: c;
+}
