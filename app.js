@@ -37,7 +37,10 @@ deleteBtn.addEventListener('click',()=>{
     deleteFromLast()
     deleteFromSmallDisplay()
 })
-decimalBtn.addEventListener('click',()=>addDecimal())
+decimalBtn.addEventListener('click',()=>{
+    addDecimal()
+})
+
 equalsBtn.addEventListener('click',()=>evaluate())
 
 // -----####-----xxxx-xxxx-xxxx-xxxx-xxxx-----####-----
@@ -59,7 +62,7 @@ function deleteFromSmallDisplay(){
 }
 
 function setOperate(operator){
-    if (operation!=="-1") evaluate()
+    if (operation!=="0") evaluate()
     operation=operator
     checkIfOperatorPresent(smallDisplayEl.textContent)?smallDisplayEl.textContent=smallDisplayEl.textContent.toString().slice(0,-1)+operator:smallDisplayEl.textContent+=operator
     checkIfStartWithOperator(smallDisplayEl.textContent)?smallDisplayEl.textContent="":smallDisplayEl.textContent=smallDisplayEl.textContent
@@ -74,7 +77,7 @@ function checkIfOperatorPresent(text){
 }
 
 function checkIfStartWithOperator(text){
-    if(!parseInt(text)) return true
+    if(!parseFloat(text)) return true
 }
 
 function evaluate(){
@@ -150,14 +153,15 @@ function deleteFromLast(){
 function addDecimal(){
     if (displayEl.textContent.includes('.')) return
     displayEl.textContent=displayEl.textContent+"."
+    smallDisplayEl.textContent=smallDisplayEl.textContent+"."
 }
 
 
 
 // -----####-----xxxx-xxxx-xxxx-xxxx-xxxx-----####-----
 
-// smallDisplayEl.textContent="/"
-// console.log(parseInt(smallDisplayEl.textContent))
+// smallDisplayEl.textContent="0.2"
+// console.log(parseFloat(smallDisplayEl.textContent))
 
 
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -7,8 +9,10 @@
 }
 
 body {
+  letter-spacing: 0.25rem;
   background: blanchedalmond;
   overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
@@ -33,6 +37,7 @@ body {
 }
 
 .btn {
+  font-family: inherit;
   padding: 1rem;
   font-size: 1.5rem;
   border: 0;
@@ -54,7 +59,10 @@ body {
 }
 
 #small-display {
-  font-size: 1.25rem;
+  font-family: monospace;
+  font-size: 1.1rem;
+  word-wrap: break-word;
+  word-break: break-all;
   color: #333;
   padding: 0.5rem 1rem 0 0.5rem;
   text-align: right;
